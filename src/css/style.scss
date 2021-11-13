@@ -1,0 +1,658 @@
+@import "./themes/dark.scss";
+
+* {
+  box-sizing: border-box;
+  font-family: tex, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.app {
+  &__container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 70rem;
+  }
+  &__header {
+    &_container {
+      margin-bottom: 1rem;
+      display: inline-flex;
+      flex-flow: row;
+      flex-basis: fit-content;
+      align-items: center;
+      & > div:nth-child(2) {
+        & > div:first-child {
+          font-size: 2em;
+          color: $mainAppHeaderColor;
+        }
+        & > div:nth-child(2) {
+          color: $mainAppHeader2Color;
+        }
+      }
+    }
+  }
+}
+
+body {
+  background: $bodyBg;
+  background-image: linear-gradient(
+    315deg,
+    $bgColorGradient1 0%,
+    $bgColorGradient2 74%
+  );
+  color: $bodyFontColor;
+  margin: 0;
+  margin-top: 25px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-size: 14px;
+}
+
+.card {
+  &__row {
+    display: flex;
+    flex-direction: row;
+  }
+  &__container {
+    position: relative;
+    background: $cardBg;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+    border-radius: 5px;
+    border-right: 1px solid $cardBorderBg;
+    border-bottom: 1px solid $cardBorderBg;
+    width: 35%;
+    padding-bottom: 1rem;
+
+    & > form {
+      padding-left: 0.5rem;
+      & > div {
+        & label {
+          font-size: 1em;
+          padding-left: 3px;
+        }
+        & span {
+          padding-left: 3px;
+        }
+      }
+    }
+
+    & > div {
+      font-size: 1em;
+      padding-left: 0.5rem;
+      & label {
+        font-size: 1em;
+        padding-left: 3px;
+      }
+      & img {
+        max-height: 1.2rem;
+        max-width: 1.2rem;
+        padding-left: 3px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      & span {
+        font-size: 1em;
+        padding-left: 3px;
+      }
+      & h4 {
+        padding-left: 3px;
+      }
+    }
+    &_small {
+      width: 200px;
+      min-height: 200px;
+    }
+  }
+  &__header {
+    font-size: 1em;
+  }
+  &_text {
+    font-size: 1em;
+    color: $fontColor50;
+  }
+  &__results {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  &__sellPrice {
+    color: $sellPriceColor;
+    animation: fadein 2s;
+    font-size: 0.9em !important;
+  }
+  &__purchasePrice {
+    color: $purchasePriceColor !important;
+    animation: fadein 2s !important;
+    font-size: 0.9em !important;
+  }
+  &__delete {
+    float: right;
+    color: $deleteColor;
+    border: 1px solid $deleteBorderColor;
+    border-radius: 3px;
+    height: 1.2rem;
+    width: 1.2rem;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+    margin-right: 3px;
+    margin-top: 3px;
+    padding-left: 0 !important;
+    padding-right: 2px;
+    &_enabled {
+      cursor: pointer;
+      background: $deleteBgEnabled;
+      &:hover {
+        background: $deleteBgHover;
+      }
+    }
+    &_disabled {
+      display: none;
+    }
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: row;
+}
+
+.crypto {
+  &__list {
+    width: 100%;
+    border-bottom: 1px solid $cryptoListBorder;
+    padding: 4px;
+    cursor: pointer;
+    &:hover {
+      background: $cryptoListBgHover;
+    }
+    &_modal {
+      width: 50rem;
+      min-height: 25rem !important;
+    }
+    &_header {
+      color: $cryptoListColor;
+      cursor: pointer;
+      &:hover {
+        color: $cryptoListColorHover;
+      }
+    }
+    & > div:first-child {
+      width: 34%;
+    }
+    & > div {
+      width: 22%;
+      font-size: 1em;
+      color: $cryptoListColor;
+    }
+    &_icon {
+      height: 2rem;
+      width: 2rem;
+    }
+    &_name {
+      &_container {
+        margin-right: 0.5rem;
+        & > div:nth-child(2) {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+  &__image {
+    max-height: 1.2rem;
+    max-width: 1.2rem;
+    padding-left: 3px;
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 3px;
+  }
+}
+
+.fadeIn {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s linear;
+}
+
+.fadeOut {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
+}
+
+h4 {
+  padding: 0;
+  display: inline;
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.historic {
+  &__modal {
+    &_displayDate {
+      padding-left: 5px;
+      color: $historicModalPrice;
+    }
+    &_popup {
+      height: 55vh !important;
+      width: 30vw !important;
+    }
+    & > div {
+      color: $historicModalFontColor;
+    }
+  }
+  &__display {
+    &_price {
+      margin-left: 3rem;
+      margin-top: 2rem;
+    }
+  }
+}
+
+.input {
+  &__text {
+    &_small {
+      width: 5rem;
+      height: 1rem;
+      margin-left: 0.5rem;
+      padding: 0 0px 0px 1px;
+      font-size: 0.9em;
+      outline-offset: 0;
+      border: none;
+      &:focus {
+        border: none;
+        outline: none;
+        line-height: 0.8rem;
+        outline-offset: 0;
+        border: none;
+      }
+    }
+    &_tiny {
+      width: 6rem;
+      height: 1rem;
+      margin-left: 0.5rem;
+      padding: 0 0px 0px 1px;
+      font-size: 0.8em;
+      outline-offset: 0;
+      border: none;
+      &_wider {
+        width: 5rem;
+        height: 1rem;
+        margin-left: 0.5rem;
+        padding: 0 0px 0px 1px;
+        font-size: 0.8em;
+        outline-offset: 0;
+        border: none;
+        padding-right: 3px;
+        &:focus {
+          border: none;
+          outline: none;
+          line-height: 0.8rem;
+          outline-offset: 0;
+          border: none;
+        }
+      }
+      &:focus {
+        border: none;
+        outline: none;
+        line-height: 0.8rem;
+        outline-offset: 0;
+        border: none;
+      }
+    }
+  }
+}
+
+.link {
+  cursor: pointer;
+  color: $link1Color;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.link2 {
+  cursor: pointer;
+  color: $link2Color;
+  font-size: 1em;
+  padding: 3px 3px 0px 3px;
+  &:hover {
+    text-decoration: underline;
+    color: $link2ColorHover;
+  }
+}
+
+.link3 {
+  cursor: pointer;
+  color: $link3Color;
+  font-size: 1em;
+  padding: 3px 3px 0px 3px;
+  &:hover {
+    text-decoration: underline;
+    color: $link3ColorHover;
+  }
+}
+
+.logo {
+  max-height: 2rem;
+  max-width: 2rem;
+  height: 2rem;
+  width: 2rem;
+  fill: $logoFill;
+  stroke: white;
+  margin-right: 0.1rem;
+  margin-left: 0.5rem;
+}
+
+.modal {
+  &__container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: $modalContainerBg;
+    z-index: 100;
+  }
+  &__popup {
+    position: fixed;
+    background: $modalPopupBg;
+    border-radius: 0.5rem;
+    min-width: 10rem;
+    min-height: 5rem;
+    top: 25%;
+    left: 50%;
+    max-height: 70%;
+    overflow-y: scroll;
+    transform: translate(-50%, -25%);
+    &_title {
+      &_bar {
+        background: $modalPopupTitleBar;
+        border-radius: 0.5rem 0.5rem 0rem 0rem;
+      }
+      color: $modalPopupTitle;
+      padding: 3px;
+    }
+  }
+}
+
+.padding {
+  &__top {
+    &_5 {
+      padding-top: 5px;
+    }
+    &_10 {
+      padding-top: 10px;
+    }
+  }
+  &__left {
+    &_5 {
+      padding-left: 5px;
+    }
+  }
+}
+
+.net {
+  &__profit {
+    color: green;
+    font-size: 1.2em;
+  }
+  &__loss {
+    color: red;
+    font-size: 1.2em;
+  }
+}
+
+.results {
+  &__span {
+    color: rgba(255, 255, 255, 1);
+    padding-right: 2px;
+  }
+  &__header {
+    color: red !important;
+    text-align: right;
+  }
+}
+
+#results__header {
+  color: $resultsHeaderColor !important;
+  text-align: right;
+}
+
+.row {
+  display: flex;
+}
+
+.table {
+  display: table;
+  &__loading {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: $tableLoadingColor;
+    font-style: italic;
+    padding-top: 5rem;
+  }
+  &__row {
+    display: table-row;
+    & > div {
+      display: table-cell;
+      padding: 3px;
+    }
+    & > div:first-child {
+      text-align: right;
+      color: $fontColor50;
+      margin-right: 3px;
+    }
+    &_last {
+      & > div {
+        border-bottom: $borderMain;
+      }
+    }
+    &_result {
+      color: $fontColor50 !important;
+    }
+    &_right {
+      text-align: right !important;
+    }
+  }
+}
+
+.text {
+  &__small {
+    font-size: 0.9em !important;
+  }
+  &__disabled {
+    color: $fontColor30;
+    &_header {
+      color: $fontColor30;
+      font-size: 1.2em;
+    }
+  }
+  &__header {
+    font-size: 1.2em;
+  }
+}
+
+.margin {
+  &__top {
+    &_10 {
+      margin-top: 0.625rem;
+    }
+  }
+  &__left {
+    &_10 {
+      margin-left: 0.625rem;
+    }
+  }
+  &__bottom {
+    &_10 {
+      margin-bottom: 10px;
+    }
+    &_20 {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.saveCards {
+  padding-top: 3px;
+  padding-left: 16px;
+  &__active {
+    color: $saveCardsColor;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &__saving {
+    opacity: 30%;
+  }
+  &__inactive {
+    opacity: 30%;
+    cursor: default;
+  }
+}
+
+.select {
+  &__crypto {
+    &_container {
+      background: $selectCryptoContainerBg;
+      padding-bottom: 0.25rem;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+    }
+  }
+}
+
+.tooltip {
+  &__arrow {
+    &_show {
+      color: $tooltipArrowColor;
+    }
+    &_hide {
+      display: none;
+    }
+    &_animate {
+      transition: all 0.5s ease-in-out;
+      animation: bounce-1 normal 1s infinite ease-in-out;
+    }
+  }
+  &__container {
+    padding: 0px 3px 0px 3px;
+    color: $tooltipColor;
+  }
+  & > span {
+    font-size: 0.9em !important;
+    display: inline-block;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes blink {
+  0% {
+    color: $tooltipColor;
+  }
+  50% {
+    color: $tooltipColor2;
+  }
+  100% {
+    color: $tooltipColor;
+  }
+}
+
+@keyframes bounce-1 {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(0.25rem);
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .app {
+    &__header {
+      &_container {
+        margin-left: 1rem;
+      }
+    }
+  }
+  .card {
+    &__row {
+      flex-direction: column;
+    }
+    &__container {
+      width: 95%;
+    }
+    &__results {
+      margin-bottom: 3rem;
+      margin-left: 0;
+      margin-top: 0rem;
+      margin-right: 1rem;
+      padding-bottom: 1rem;
+      align-self: center;
+    }
+  }
+  .crypto {
+    &__list {
+      width: 100%;
+
+      &_modal {
+        min-height: 25rem !important;
+        width: 100%;
+      }
+
+      & > div:first-child {
+        width: 40%;
+      }
+      & > div {
+        width: 30%;
+        font-size: 1em;
+        color: $cryptoListColor;
+      }
+      & > div:nth-child(3) {
+        display: none;
+      }
+
+      &_icon {
+        height: 2rem;
+        width: 2rem;
+      }
+      &_name {
+        &_container {
+          margin-right: 0.5rem;
+          & > div:nth-child(2) {
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+  }
+  .modal {
+    &__popup {
+      transform: translate(-50%, -20%);
+    }
+  }
+}
