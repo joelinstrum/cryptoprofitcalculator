@@ -477,6 +477,14 @@ h4 {
   }
 }
 
+.padding {
+  &__bottom {
+    &_40 {
+      padding-bottom: 4rem;
+    }
+  }
+}
+
 .margin {
   &__top {
     &_10 {
@@ -490,10 +498,16 @@ h4 {
   }
   &__bottom {
     &_10 {
-      margin-bottom: 10px;
+      margin-bottom: 1rem;
     }
     &_20 {
-      margin-bottom: 20px;
+      margin-bottom: 2rem;
+    }
+    &_30 {
+      margin-bottom: 3rem;
+    }
+    &_40 {
+      margin-bottom: 4rem;
     }
   }
 }

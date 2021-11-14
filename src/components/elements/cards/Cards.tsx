@@ -83,7 +83,7 @@ const Cards: React.FC<{}> = () => {
         {cards.map((cardItem, n) => (
           <Card cardData={cardItem} key={cardItem.id} num={n} />
         ))}
-        <div className="row margin__bottom_20">
+        <div className="row padding__bottom_40">
           <div className="link2" onClick={addCardHandler}>
             + Add a calculator card
           </div>
