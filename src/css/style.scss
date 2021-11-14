@@ -656,3 +656,12 @@ h4 {
     }
   }
 }
+
+/* calendar date picker overrides */
+.react-date-picker__inputGroup__input,
+.react-date-picker__inputGroup__month {
+  min-width: 1em !important;
+}
+.react-date-picker__inputGroup__year {
+  min-width: 2.2em !important;
+}
