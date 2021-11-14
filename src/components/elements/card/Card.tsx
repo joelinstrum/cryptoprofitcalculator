@@ -44,19 +44,27 @@ const Card: React.FC<CardProps> = ({ cardData, num }) => {
     setShowModal(false);
   };
 
-  const historicPriceClickHandler = (historicPrice: string) => {
+  const historicPriceClickHandler = (
+    historicPrice: string,
+    historicDate: string
+  ) => {
     setShowPriceHistoricModal(false);
     updateCardHandler(cardData.id, {
       purchasePrice: historicPrice,
       purchaseSource: "historic",
+      purchaseDate: historicDate,
     });
   };
 
-  const historicSellClickHandler = (historicPrice: string) => {
+  const historicSellClickHandler = (
+    historicPrice: string,
+    sellDate: string
+  ) => {
     setSellPriceHistoricModal(false);
     updateCardHandler(cardData.id, {
       sellPrice: historicPrice,
       sellSource: "historic",
+      sellDate,
     });
   };
 

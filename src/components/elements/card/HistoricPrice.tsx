@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import DatePicker from "react-date-picker";
-import { formatNumber } from "../../../lib/helpers";
+import { formatNumber, formatDate } from "../../../lib/helpers";
 import api from "../../../lib/api";
 
 interface HistoricPriceProps {
   cryptoTicker: string;
   cryptoName: string;
   cryptoPrice?: string | number | null | undefined;
-  clickHandler: (item: string) => void;
+  clickHandler: (item: string, date: string) => void;
 }
 
 const HistoricPrice: React.FC<HistoricPriceProps> = ({
@@ -16,41 +16,41 @@ const HistoricPrice: React.FC<HistoricPriceProps> = ({
   cryptoPrice,
   clickHandler,
 }) => {
-  const [value, setDateValue] = useState(new Date());
+  const [dateValue, setDateValue] = useState(new Date());
   const [historicPrice, setHistoricPrice] = useState<
     string | number | null | undefined
   >(formatNumber(cryptoPrice));
   const [hpClassname, setHpClassname] = useState("fadeIn");
   const [isLoading, setIsLoading] = useState(false);
+  const [historicDate, setHistoricDate] = useState("");
 
   const setPrice = () => {
     let p = historicPrice ? historicPrice.toString() : "";
-    clickHandler(p);
+    clickHandler(p, historicDate);
   };
 
   const changeHandler = (date: Date) => {
     if (cryptoPrice) {
       setHpClassname("fadeOut");
-      setTimeout(() => {
-        setDateValue(date);
-        setIsLoading(true);
-      }, 200);
+      setDateValue(date);
+      setIsLoading(true);
     }
   };
 
   useEffect(() => {
     const getItem = async () => {
-      const timestamp = (value.getTime() / 1000).toString();
+      const timestamp = (dateValue.getTime() / 1000).toString();
       const data = await api.fetchItem(cryptoTicker, timestamp);
       const price = data[cryptoTicker.toUpperCase()].USD;
       setHistoricPrice(formatNumber(price));
       setIsLoading(false);
       setHpClassname("fadeIn");
+      setHistoricDate(formatDate(dateValue));
     };
     if (isLoading) {
       getItem();
     }
-  }, [isLoading, cryptoTicker, value, setIsLoading, setHpClassname]);
+  }, [isLoading, cryptoTicker, dateValue, setIsLoading, setHpClassname]);
 
   return (
     <div className="historic__modal">
@@ -59,7 +59,7 @@ const HistoricPrice: React.FC<HistoricPriceProps> = ({
         style={{ float: "right" }}
       >
         <img
-          src={`./images/crypto-icons/${cryptoTicker}.png`}
+          src={`${process.env.PUBLIC_URL}/images/crypto-icons/${cryptoTicker}.png`}
           alt={cryptoName}
           className="crypto__image"
         />
@@ -79,7 +79,7 @@ const HistoricPrice: React.FC<HistoricPriceProps> = ({
         <div>
           <DatePicker
             onChange={changeHandler}
-            value={value}
+            value={dateValue}
             autoFocus={true}
             isOpen={true}
             maxDate={new Date()}
@@ -94,7 +94,7 @@ const HistoricPrice: React.FC<HistoricPriceProps> = ({
                 {historicPrice && (
                   <div>
                     <div>
-                      Price of ${cryptoName} on (some date): {historicPrice}
+                      Price of ${cryptoName} on {historicDate}: {historicPrice}
                     </div>
                     <div
                       className={`historic__displayPrice ${hpClassname} link3`}

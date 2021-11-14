@@ -7,7 +7,7 @@ interface HistoricPriceProps {
   cryptoTicker: string;
   cryptoName: string;
   cryptoPrice?: string | number | null | undefined;
-  clickHandler: (item: string) => void;
+  clickHandler: (item: string, date: string) => void;
 }
 
 const HistoricPrice: React.FC<HistoricPriceProps> = ({
@@ -22,10 +22,11 @@ const HistoricPrice: React.FC<HistoricPriceProps> = ({
   >(formatNumber(cryptoPrice));
   const [hpClassname, setHpClassname] = useState("fadeIn");
   const [isLoading, setIsLoading] = useState(false);
+  const [historicDate, setHistoricDate] = useState("");
 
   const setPrice = () => {
     let p = historicPrice ? historicPrice.toString() : "";
-    clickHandler(p);
+    clickHandler(p, historicDate);
   };
 
   const changeHandler = (date: Date) => {

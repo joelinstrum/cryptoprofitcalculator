@@ -97,3 +97,7 @@ export const toTimestamp = (date: string) => {
   var datum = Date.parse(date);
   return datum / 1000;
 };
+
+export const formatDate = (date: Date) => {
+  return date.toLocaleDateString("en-US");
+};
