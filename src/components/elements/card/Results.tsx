@@ -10,21 +10,21 @@ const Results: React.FC<ResultsProps> = ({ cardData }) => {
   const [net, setNet] = useState<number | null | string>(null);
   const [isProfit, setIsProit] = useState(false);
   const [formattedCoins, setFormattedCoins] = useState(
-    formatNumber(cardData.coins)
+    formatNumber(cardData.coins, 4)
   );
   const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
     const _return = calculateReturn(cardData.coins, cardData.sellPrice);
-    setFormattedCoins(formatNumber(cardData.coins));
+    setFormattedCoins(formatNumber(cardData.coins, 4));
     if (cardData.coins && cardData.investment) {
       let _net = formatNet(cardData.investment, _return);
       if (_net) {
-        setIsProit(_net >= 0);
-        setNet(formatNumber(_net));
-      } else if (_net === 0) {
-        setIsProit(_net >= 0);
-        setNet(formatNumber(_net));
+        setIsProit(_net >= "0");
+        setNet(formatNumber(_net, 2));
+      } else if (_net === "0") {
+        setIsProit(_net >= "0");
+        setNet(formatNumber(_net, 2));
       }
       setTotalReturn(_return);
       setEnabled(true);
@@ -88,7 +88,7 @@ const Results: React.FC<ResultsProps> = ({ cardData }) => {
             <div className="table__row_right">
               {cardData.investment && (
                 <span className="fadeIn">
-                  ${formatNumber(cardData.investment)}
+                  ${formatNumber(cardData.investment, 2)}
                 </span>
               )}
             </div>

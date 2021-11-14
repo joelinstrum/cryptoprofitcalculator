@@ -99,16 +99,14 @@ const SellPrice: React.FC<SellPriceProps> = ({
           <label>Sell price</label>
           {price ? (
             <React.Fragment>
-              <span className="card__sellPrice">
+              <span className="card__purchasePrice">
                 ${formatNumber(cardData.sellPrice, 6)}
               </span>
-              <span className="text__small">
-                (per coin{" "}
-                {radioOption === "historic" && cardData.sellDate
-                  ? ` on ${cardData.sellDate}`
-                  : ""}
-                )
-              </span>
+              {radioOption === "historic" && cardData.sellDate ? (
+                <span className="text__small"> on {cardData.sellDate}</span>
+              ) : (
+                <span />
+              )}
             </React.Fragment>
           ) : (
             <span className="card_SellPrice"></span>

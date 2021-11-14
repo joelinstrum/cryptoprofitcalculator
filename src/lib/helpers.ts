@@ -4,7 +4,7 @@ export const initialCards: ICard[] = [defaultCard];
 
 export const formatNumber = (
   arg: string | number | null | undefined,
-  maxDecimals: number = 2
+  maxDecimals?: number
 ) => {
   let s = arg?.toString();
   let retval;
@@ -16,8 +16,8 @@ export const formatNumber = (
     let numberArray = s.split(".");
     let preDecimal = numberArray[0].replaceAll(/[^0-9-]/g, "");
     let postDecimal = numberArray.length > 1 ? numberArray[1] : "";
-    let max = maxDecimals;
-    if (postDecimal.length > max) {
+    let max = maxDecimals || postDecimal.length;
+    if (maxDecimals && postDecimal.length > max) {
       postDecimal = postDecimal.substring(0, max);
     }
     if (postDecimal) {
@@ -33,7 +33,7 @@ export const formatNumber = (
       retval = postDecimal;
     }
   } else {
-    retval = "0";
+    retval = "";
   }
   if (retval === "NaN") {
     return "";
@@ -48,7 +48,7 @@ export const formatNet = (
   if (initialInvestment && totalReturn) {
     let i = parseFloat(initialInvestment.toString().replaceAll(/[^0-9.]/g, ""));
     let t = parseFloat(totalReturn.toString().replaceAll(/[^0-9.]/g, ""));
-    return t - i;
+    return (t - i).toFixed(2);
   }
   return null;
 };
@@ -69,7 +69,7 @@ export const calculateReturn = (coins: any, sellPrice: any) => {
   if (coins && sellPrice) {
     let _c = toInt(coins, 4);
     let _p = toInt(sellPrice, 4);
-    let r = formatNumber(_c * _p);
+    let r = formatNumber(_c * _p, 2);
     return r;
   } else {
     return null;

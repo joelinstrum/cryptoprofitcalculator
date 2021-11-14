@@ -34,7 +34,7 @@ const Investment: React.FC<InvestmentProps> = ({ cardData, showTooltip }) => {
   };
 
   const coinsHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let val = formatNumber(e.target.value);
+    let val = formatNumber(e.target.value, 4);
     let _investment =
       parseFloat(e.target.value) * toInt(cardData.purchasePrice);
     if (val !== "0") {
@@ -53,7 +53,7 @@ const Investment: React.FC<InvestmentProps> = ({ cardData, showTooltip }) => {
       4
     );
     setCoins(_coins);
-    const val = formatNumber(e.target.value);
+    const val = formatNumber(e.target.value, 2);
     if (val === "0") {
       setInvestment("");
     } else {
@@ -75,7 +75,7 @@ const Investment: React.FC<InvestmentProps> = ({ cardData, showTooltip }) => {
 
   useEffect(() => {
     let _investment;
-    _investment = toInt(cardData.purchasePrice) * toInt(coins, 6);
+    _investment = toInt(cardData.purchasePrice) * toInt(coins, 2);
     updateCardHandler(cardData.id, {
       investment: _investment,
       investmentType: investmentType,
@@ -175,7 +175,7 @@ const Investment: React.FC<InvestmentProps> = ({ cardData, showTooltip }) => {
               type="text"
               className="input__text_tiny"
               onChange={investmentHandler}
-              value={investment || ""}
+              value={formatNumber(investment, 2) || ""}
               onBlur={saveInput}
               disabled={!enabled}
             />

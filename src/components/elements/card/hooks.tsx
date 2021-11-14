@@ -14,8 +14,9 @@ export const usePrice = (
   useEffect(() => {
     const fetchItem = async () => {
       const data = await api.fetchItem(ticker!);
-      const price = data.USD;
-      setPrice(price);
+      const price = data.USD.toString();
+      const p = price.replaceAll(/[^a-z0-9.]/g, "");
+      setPrice(p);
       timerRef.current = setTimeout(() => {
         if (purchaseSource === "current") {
           fetchItem();

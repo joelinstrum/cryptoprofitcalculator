@@ -23,6 +23,7 @@ const CrytpoList: React.FC<CryptoListProps> = ({ clickHandler }) => {
       const _cryptoList: ICryptoList = { ...cryptos };
       const tickers = Object.keys(_cryptoList).map((key) => key);
       const data = await api.get(tickers);
+      console.log(data);
       let objects = data?.DISPLAY;
       if (objects) {
         Object.keys(objects).forEach((key) => {
@@ -31,7 +32,7 @@ const CrytpoList: React.FC<CryptoListProps> = ({ clickHandler }) => {
             _cryptoList[key] = {
               ..._cryptoList[key],
               ...{
-                currentPrice: formatNumber(obj.PRICE, 2),
+                currentPrice: formatNumber(obj.PRICE, 6),
                 change: obj.CHANGE24HOUR,
                 marketCap: obj.MKTCAP,
               },

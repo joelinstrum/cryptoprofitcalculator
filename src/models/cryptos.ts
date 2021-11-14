@@ -83,14 +83,14 @@ export const cryptoCurrencies: ICryptoList = {
     marketCap: null,
     change: null,
   },
-  SHIBU: {
+  SHIB: {
     fullName: "Shibu",
     currentPrice: null,
     ticker: "shib",
     marketCap: null,
     change: null,
   },
-  SOLANA: {
+  SOL: {
     fullName: "Solana",
     currentPrice: null,
     ticker: "sol",
@@ -108,6 +108,13 @@ export const cryptoCurrencies: ICryptoList = {
     fullName: "Stellar Lumens",
     currentPrice: null,
     ticker: "xlm",
+    marketCap: null,
+    change: null,
+  },
+  XRP: {
+    fullName: "XRP",
+    currentPrice: null,
+    ticker: "xrp",
     marketCap: null,
     change: null,
   },
