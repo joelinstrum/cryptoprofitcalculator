@@ -32,7 +32,7 @@ const SelectCrypto: React.FC<SelectCryptoProps> = ({
           {cardData.cryptoName ? (
             <React.Fragment>
               <img
-                src={`./images/crypto-icons/${cardData.cryptoTicker}.png`}
+                src={`${process.env.PUBLIC_URL}/images/crypto-icons/${cardData.cryptoTicker}.png`}
                 alt={cardData.cryptoName}
               />
               <span>

@@ -73,7 +73,10 @@ const CrytpoList: React.FC<CryptoListProps> = ({ clickHandler }) => {
                 <div className="row">
                   <div className="crypto__list_name_container">
                     <img
-                      src={`./images/crypto-icons/${_crypto.ticker}.png`}
+                      src={
+                        process.env.PUBLIC_URL +
+                        `/images/crypto-icons/${_crypto.ticker}.png`
+                      }
                       alt={_crypto.ticker}
                       className="crypto__list_icon"
                     />
