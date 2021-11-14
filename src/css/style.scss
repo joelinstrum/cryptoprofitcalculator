@@ -9,8 +9,7 @@
   &__container {
     margin: 0 auto;
     margin-top: 3rem;
-    width: 100%;
-    max-width: 70rem;
+    max-width: 60rem;
     transform: scale(1.1);
   }
   &__header {
@@ -58,10 +57,11 @@ body {
     background: $cardBg;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     margin: 10px;
+    margin-right: 3rem;
     border-radius: 5px;
     border-right: 1px solid $cardBorderBg;
     border-bottom: 1px solid $cardBorderBg;
-    width: 35%;
+    width: 40%;
     padding-bottom: 1rem;
 
     & > form {
@@ -602,6 +602,7 @@ h4 {
   .card {
     &__container {
       width: 55%;
+      margin-right: 0rem;
     }
   }
 }
@@ -610,6 +611,7 @@ h4 {
   .app {
     &__container {
       transform: scale(1);
+      width: 95%;
     }
     &__header {
       &_container {
@@ -623,6 +625,7 @@ h4 {
     }
     &__container {
       width: 95%;
+      margin-right: 0rem;
     }
     &__results {
       margin-bottom: 3rem;
