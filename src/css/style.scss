@@ -8,8 +8,10 @@
 .app {
   &__container {
     margin: 0 auto;
+    margin-top: 3rem;
     width: 100%;
     max-width: 70rem;
+    transform: scale(1.1);
   }
   &__header {
     &_container {
@@ -591,8 +593,24 @@ h4 {
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1200px) {
   .app {
+    &__container {
+      transform: scale(1);
+    }
+  }
+  .card {
+    &__container {
+      width: 55%;
+    }
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .app {
+    &__container {
+      transform: scale(1);
+    }
     &__header {
       &_container {
         margin-left: 1rem;
