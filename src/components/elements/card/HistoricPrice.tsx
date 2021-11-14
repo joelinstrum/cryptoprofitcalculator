@@ -19,7 +19,7 @@ const HistoricPrice: React.FC<HistoricPriceProps> = ({
   const [dateValue, setDateValue] = useState(new Date());
   const [historicPrice, setHistoricPrice] = useState<
     string | number | null | undefined
-  >(formatNumber(cryptoPrice));
+  >(formatNumber(cryptoPrice, 4));
   const [hpClassname, setHpClassname] = useState("fadeIn");
   const [isLoading, setIsLoading] = useState(false);
   const [historicDate, setHistoricDate] = useState("");
@@ -42,7 +42,7 @@ const HistoricPrice: React.FC<HistoricPriceProps> = ({
       const timestamp = (dateValue.getTime() / 1000).toString();
       const data = await api.fetchItem(cryptoTicker, timestamp);
       const price = data[cryptoTicker.toUpperCase()].USD;
-      setHistoricPrice(formatNumber(price));
+      setHistoricPrice(formatNumber(price, 4));
       setIsLoading(false);
       setHpClassname("fadeIn");
       setHistoricDate(formatDate(dateValue));

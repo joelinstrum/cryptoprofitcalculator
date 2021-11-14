@@ -9,6 +9,9 @@ export const formatNumber = (
   let s = arg?.toString();
   let retval;
   if (s) {
+    if (s === ".") {
+      return s;
+    }
     const endsInDecimal = s[s.length - 1] === ".";
     let numberArray = s.split(".");
     let preDecimal = numberArray[0].replaceAll(/[^0-9-]/g, "");
@@ -23,8 +26,12 @@ export const formatNumber = (
     if (endsInDecimal) {
       postDecimal = ".";
     }
-    preDecimal = parseInt(preDecimal, 10).toLocaleString("en-US");
-    retval = preDecimal + postDecimal;
+    if (preDecimal) {
+      preDecimal = parseInt(preDecimal, 10).toLocaleString("en-US");
+      retval = preDecimal + postDecimal;
+    } else {
+      retval = postDecimal;
+    }
   } else {
     retval = "0";
   }
@@ -60,8 +67,8 @@ export const toInt = (s: any, d?: number): any => {
 
 export const calculateReturn = (coins: any, sellPrice: any) => {
   if (coins && sellPrice) {
-    let _c = toInt(coins);
-    let _p = toInt(sellPrice);
+    let _c = toInt(coins, 4);
+    let _p = toInt(sellPrice, 4);
     let r = formatNumber(_c * _p);
     return r;
   } else {
