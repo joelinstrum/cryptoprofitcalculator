@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/cryptoprofitcalculator/static/css/main.0b0f7546.chunk.css",
-    "main.js": "/cryptoprofitcalculator/static/js/main.69685348.chunk.js",
-    "main.js.map": "/cryptoprofitcalculator/static/js/main.69685348.chunk.js.map",
+    "main.js": "/cryptoprofitcalculator/static/js/main.3a6977ec.chunk.js",
+    "main.js.map": "/cryptoprofitcalculator/static/js/main.3a6977ec.chunk.js.map",
     "runtime-main.js": "/cryptoprofitcalculator/static/js/runtime-main.38fd6238.js",
     "runtime-main.js.map": "/cryptoprofitcalculator/static/js/runtime-main.38fd6238.js.map",
     "static/css/2.ba1b51e3.chunk.css": "/cryptoprofitcalculator/static/css/2.ba1b51e3.chunk.css",
@@ -19,6 +19,6 @@
     "static/css/2.ba1b51e3.chunk.css",
     "static/js/2.1841c948.chunk.js",
     "static/css/main.0b0f7546.chunk.css",
-    "static/js/main.69685348.chunk.js"
+    "static/js/main.3a6977ec.chunk.js"
   ]
 }
